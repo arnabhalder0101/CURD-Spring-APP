@@ -25,22 +25,45 @@ public class CruddemoApplication {
             // readStudentData(studentDAO);
             // findAllStudents(studentDAO);
             // findStdByLastName(studentDAO);
-             orderByStudentLastName(studentDAO);
+            // orderByStudentLastName(studentDAO);
+            //updateStudent(studentDAO);
+             updateMultipleStudent(studentDAO);
         };
+    }
+
+    private void updateMultipleStudent(StudentDAO studentDAO) {
+        int no = studentDAO.updateMultiple("Dorie", 1);
+        System.out.println(no);
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        int id = 1;
+        System.out.println("Student with id: " + id);
+
+        Student student = studentDAO.findById(id);
+
+        // setting up the 1st name as update new fname
+        student.setFirstName("John");
+
+        // update call here --
+        studentDAO.update(student);
+
+        //display --
+        System.out.println("Update done! New entity: " + studentDAO.findById(id));
+
     }
 
     private void orderByStudentLastName(StudentDAO studentDAO) {
         List<Student> listStudent = studentDAO.orderByLastname();
-        for ( Student s:listStudent){
+        for (Student s : listStudent) {
             System.out.println(s);
 
         }
     }
 
-
     private void findStdByLastName(StudentDAO studentDAO) {
-        List<Student> studentList = studentDAO.findByLastName("Ghosh");
-        for (Student s: studentList){
+        List<Student> studentList = studentDAO.findByLastName("Halder");
+        for (Student s : studentList) {
             System.out.println(s);
         }
     }

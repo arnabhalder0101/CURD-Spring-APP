@@ -10,4 +10,8 @@ public interface StudentDAO {
     List<Student> findAll();
     List<Student> findByLastName(String lastname);
     List<Student> orderByLastname();
+    void update(Student theStudent);
+
+    int updateMultiple(String selector, int limit);
+
 }
