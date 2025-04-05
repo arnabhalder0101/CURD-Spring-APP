@@ -13,5 +13,6 @@ public interface StudentDAO {
     void update(Student theStudent);
     int updateMultiple(String selector, int limit);
     void delete(Integer id);
+    int deleteAll();
 
 }
