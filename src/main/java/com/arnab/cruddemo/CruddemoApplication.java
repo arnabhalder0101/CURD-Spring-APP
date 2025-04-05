@@ -26,14 +26,23 @@ public class CruddemoApplication {
             // findAllStudents(studentDAO);
             // findStdByLastName(studentDAO);
             // orderByStudentLastName(studentDAO);
-            //updateStudent(studentDAO);
-             updateMultipleStudent(studentDAO);
+            // updateStudent(studentDAO);
+            // updateMultipleStudent(studentDAO);
+             deleteStudentById(studentDAO);
+
         };
+    }
+
+    private void deleteStudentById(StudentDAO studentDAO) {
+        int id = 1;
+        System.out.println("Delete the id "+ id);
+        studentDAO.delete(id);
+
     }
 
     private void updateMultipleStudent(StudentDAO studentDAO) {
         int no = studentDAO.updateMultiple("Dorie", 1);
-        System.out.println(no);
+        System.out.println("Number of rows modified: "+no);
     }
 
     private void updateStudent(StudentDAO studentDAO) {

@@ -11,7 +11,7 @@ public interface StudentDAO {
     List<Student> findByLastName(String lastname);
     List<Student> orderByLastname();
     void update(Student theStudent);
-
     int updateMultiple(String selector, int limit);
+    void delete(Integer id);
 
 }

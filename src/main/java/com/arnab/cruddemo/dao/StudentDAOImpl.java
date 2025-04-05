@@ -31,6 +31,7 @@ public class StudentDAOImpl implements StudentDAO{
 
     @Override
     // @Transactional --> not needed as only reading operation is here!
+    // only at a time of db modification it's needed
     public Student findById(Integer id) {
         return entityManager.find(Student.class, id);
     }
@@ -72,6 +73,15 @@ public class StudentDAOImpl implements StudentDAO{
     public int updateMultiple(String selector, int limit) {
         int numberOfRows = entityManager.createQuery("UPDATE Student s SET s.lastName= :lastname WHERE s.id<= :num").setParameter("lastname", selector).setParameter("num", limit).executeUpdate();
         return numberOfRows;
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+        // find the student by id--
+        Student student = entityManager.find(Student.class, id);
+        entityManager.remove(student);
+
     }
 
 
